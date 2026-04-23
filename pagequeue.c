@@ -18,7 +18,12 @@
 PageQueue *pqInit(unsigned int maxSize) {
     // TODO: malloc a PageQueue, set head and tail to NULL,
     //       size to 0, maxSize to maxSize, and return the pointer
-    return NULL;
+    PageQueue* newPageQueue = (PageQueue*) malloc(sizeof(PageQueue));
+    newPageQueue->head = NULL;
+    newPageQueue->tail = NULL;
+    newPageQueue->size = 0;
+    newPageQueue->maxSize = maxSize;
+    return newPageQueue;
 }
 
 /**
@@ -37,7 +42,7 @@ long pqAccess(PageQueue *pq, unsigned long pageNum) {
     //   - Allocate a new node for pageNum and insert it at the tail.
     //   - If size now exceeds maxSize, evict the head node (free it).
     //   - Return -1.
-    return -1;
+        return -1;
 }
 
 /**
