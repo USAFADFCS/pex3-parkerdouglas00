@@ -95,7 +95,20 @@ int main(int argc, char **argv) {
         //                    (fault for any allocation with fewer than d+1 frames)
         //
         //       Update faults[] accordingly.
+        long d = pqAccess(pq, pageNum);
 
+        // if page not found
+        if (d == -1) {
+            for (int f = 1; f <= maxFrames; f++) {
+                faults[f]++;
+            }
+        }
+        // if page was found
+        else {
+            for (int f = 1; f <= d; f++) {
+                faults[f]++;
+            }
+        }
     }
 
     fprintf(stderr, "\n%lu total accesses processed\n", numAccesses);
