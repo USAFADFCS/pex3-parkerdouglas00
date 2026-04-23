@@ -129,4 +129,24 @@ void pqPrint(PageQueue *pq) {
     // TODO (optional): Print each page number from head to tail,
     //                  marking which is head and which is tail.
     //                  Useful for desk-checking small traces.
+    PqNode* currentNode = pq->head;
+    while (currentNode != NULL) {
+        // if currentNode is head and tail (size = 1)
+        if (currentNode == pq->head && currentNode == pq->tail) {
+            fprintf(stderr, "%lu (head and tail)\n", currentNode->pageNum);
+        }
+        // if current node is head
+        else if (currentNode == pq->head) {
+            fprintf(stderr, "%lu (head)\n", currentNode->pageNum);
+        }
+        // if currentNode is tail
+        else if (currentNode == pq->tail) {
+            fprintf(stderr, "%lu (tail)\n", currentNode->pageNum);
+        }
+        // if currentNode is middle node
+        else {
+            fprintf(stderr, "%lu\n", currentNode->pageNum);
+        }
+    currentNode = currentNode->next;
+    }
 }
